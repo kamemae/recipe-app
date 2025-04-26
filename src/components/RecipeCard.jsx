@@ -5,24 +5,23 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function RecipeCard({ recipe, setRecipes }) {
   const deleteRecipe = () => {
+    const storedName = recipe.title;
     setRecipes(prev => prev.filter(r => r.id !== recipe.id));
-    toast.info('deleted.');
+    toast.info("Deleted " + "'" + storedName + "'" + ', are you finally happy?');
   };
 
   const toggleFavorite = () => {
     setRecipes(prev => prev.map(r => r.id === recipe.id ? { ...r, favorite: !r.favorite } : r));
-    toast.success(recipe.favorite ? 'removed from favourites' : 'added to favourites');
+    toast.success(recipe.favorite ? "'" + recipe.title + "' has been removed from favourites succesfully. HOW DARE YOU!" : "'" + recipe.title + "' added to favourites");
   };
 
   return (
     <>
-      <Card style={{ minWidth: '18rem'}}>
-        
+      <Card style={{ minWidth: '256px', maxWidth: '512px', margin:"5px" }} className="mb-4">
         <Card.Body>
-          <Card.Title>title</Card.Title>
-          <Card.Text>
-            description
-          </Card.Text>
+          <Card.Img variant="top" src={recipe.image} style={{ height: '128px', objectFit:"cover" }} />
+          <Card.Title style={{margin:"10px"}}>{recipe.title}</Card.Title>
+          <Card.Text>{recipe.desc}</Card.Text>
           <Button variant="outline-success">See more...</Button>
           <Button variant={recipe.favorite ? "outline-danger" : "outline-success"} onClick={toggleFavorite} style={{ float: "right" }}><i className={ recipe.favorite ? 'bi bi-heart-fill' : 'bi bi-plus-circle' }/></Button>
           <Button variant='outline-danger' style={{ float: "right" }} onClick={deleteRecipe}><i className='bi bi-trash'/></Button>
@@ -30,6 +29,4 @@ export default function RecipeCard({ recipe, setRecipes }) {
       </Card>
     </>
   );
-
-  //<Card.Img variant="top" src="holder.js/100px180" />
 }
