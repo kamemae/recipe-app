@@ -1,18 +1,16 @@
+import RecipeCard from "./RecipeCard.jsx";
 export default function FavoriteRecipes({ recipes, setRecipes }) {
   const favorites = recipes.filter(r => r.favorite);
-
-  if (!favorites.length) return null;
+  if(!favorites.length) return null;
 
   return (
-    <div className="mb-8">
-      <h2 className="text-2xl font-semibold mb-4">favs</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {favorites.map(recipe => (
-          <div key={recipe.id} className="bg-pink-100 p-4 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold">{recipe.title}</h3>
-          </div>
-        ))}
+    <>
+      <h2 className="text-center">Favorite Recipes</h2>
+      <div style={{ padding: "16px", margin: "0 auto", maxWidth: "1200px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "16px",  justifyContent: "center", }}>
+          {favorites.map((recipe) => ( <RecipeCard key={recipe.id} recipe={recipe} setRecipes={setRecipes} /> ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

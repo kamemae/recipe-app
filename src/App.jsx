@@ -22,22 +22,18 @@ export default function App() {
   return (
     <>
       <NavbarComponent />
-
-
-
-
-
+      <ToastContainer />
       <div className="min-h-screen bg-gray-100 p-4">
         <RecipeList recipes={recipes} setRecipes={setRecipes} />
+
+
 
         <br/><br/><br/><br/><br/><br/>
         <RecipeForm setRecipes={setRecipes} />
         <InspirationGenerator recipes={recipes} />
-        <br/><br/>
         <FavoriteRecipes recipes={recipes} setRecipes={setRecipes} />
-        
-        <ToastContainer />
       </div>
+      
     </>
   );
 }
