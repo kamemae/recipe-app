@@ -33,12 +33,12 @@ export default function RecipeForm({ setRecipes }) {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md mb-8">
-      <h2 className="text-2xl font-semibold mb-4">Dodaj nowy przepis</h2>
+      <h2 className="text-2xl font-semibold mb-4">add new recipe</h2>
       <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Tytuł" className="input" />
       <input value={ingredients} onChange={e => setIngredients(e.target.value)} placeholder="Składniki (oddzielone przecinkami)" className="input" />
       <textarea value={steps} onChange={e => setSteps(e.target.value)} placeholder="Kroki przygotowania" className="input"></textarea>
       <input value={time} onChange={e => setTime(e.target.value)} placeholder="Czas gotowania (minuty)" className="input" />
-      <button type="submit" className="btn">Dodaj Przepis</button>
+      <button type="submit" className="btn">+</button>
     </form>
   );
 }

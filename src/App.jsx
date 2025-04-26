@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
-      <h1 className="text-4xl font-bold text-center mb-8">Kreator Przepisów</h1>
+      <h1 className="text-4xl font-bold text-center mb-8">recipe creator</h1>
       <RecipeForm setRecipes={setRecipes} />
       <InspirationGenerator recipes={recipes} />
       <FavoriteRecipes recipes={recipes} setRecipes={setRecipes} />

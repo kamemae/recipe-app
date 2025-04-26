@@ -4,12 +4,12 @@ import { toast } from 'react-toastify';
 export default function RecipeCard({ recipe, setRecipes }) {
   const deleteRecipe = () => {
     setRecipes(prev => prev.filter(r => r.id !== recipe.id));
-    toast.info('Przepis usunięty.');
+    toast.info('deleted.');
   };
 
   const toggleFavorite = () => {
     setRecipes(prev => prev.map(r => r.id === recipe.id ? { ...r, favorite: !r.favorite } : r));
-    toast.success(recipe.favorite ? 'Usunięto z ulubionych' : 'Dodano do ulubionych');
+    toast.success(recipe.favorite ? 'removed from favourites' : 'added to favourites');
   };
 
   return (
@@ -21,9 +21,9 @@ export default function RecipeCard({ recipe, setRecipes }) {
           <FaTrash className="cursor-pointer text-gray-400" onClick={deleteRecipe} />
         </div>
       </div>
-      <p><strong>Składniki:</strong> {recipe.ingredients.join(', ')}</p>
-      <p><strong>Kroki:</strong> {recipe.steps}</p>
-      <p><strong>Czas:</strong> {recipe.time} min</p>
+      <p><strong>ingridients:</strong> {recipe.ingredients.join(', ')}</p>
+      <p><strong>steps:</strong> {recipe.steps}</p>
+      <p><strong>time:</strong> {recipe.time} min</p>
     </div>
   );
 } 
