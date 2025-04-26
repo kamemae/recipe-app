@@ -7,6 +7,7 @@ import SearchResults from './components/SearchResults';
 import { ToastContainer } from "react-toastify";
 import NavbarComponent from "./components/parts/navbar";
 import { Routes, Route } from 'react-router-dom';
+import LandingPage from "./components/LandingPage";
 
 export default function App() {
   const [recipes, setRecipes] = useState(() => {
@@ -22,8 +23,10 @@ export default function App() {
 
   return (
     <>
+      <title>makaron's recipe app</title>
       <NavbarComponent setSearchTerm={setSearchTerm} />
       <ToastContainer />
+
       <div className="min-h-screen bg-gray-100 p-4">
         <Routes>
           <Route path="/" element={<RecipeList recipes={recipes} setRecipes={setRecipes} />} />
@@ -31,6 +34,7 @@ export default function App() {
           <Route path="/favorites" element={<FavoriteRecipes recipes={recipes} setRecipes={setRecipes} />} />
           <Route path="/feelinglucky" element={<InspirationGenerator recipes={recipes} setRecipes={setRecipes} />} />
           <Route path="/search" element={<SearchResults recipes={recipes} setRecipes={setRecipes} searchTerm={searchTerm} />} />
+          <Route path="/product" element={<LandingPage />} />
         </Routes>
       </div>
     </>
