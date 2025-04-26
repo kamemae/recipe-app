@@ -5,35 +5,30 @@ import FavoriteRecipes from "./components/FavoriteRecipes";
 import InspirationGenerator from "./components/InspirationGenerator";
 import { ToastContainer } from "react-toastify";
 import NavbarComponent from "./components/parts/navbar";
-import Footer from "./components/parts/footer";
+import { Routes, Route } from 'react-router-dom';
 
 export default function App() {
-  const [image, setImage] = useState(null);
   const [recipes, setRecipes] = useState(() => {
     const stored = localStorage.getItem("recipes");
     return stored ? JSON.parse(stored) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem("recipes", JSON.stringify(recipes), image);
+    localStorage.setItem("recipes", JSON.stringify(recipes));
   }, [recipes]);
-
-
 
   return (
     <>
       <NavbarComponent />
       <ToastContainer />
       <div className="min-h-screen bg-gray-100 p-4">
-        <RecipeList recipes={recipes} setRecipes={setRecipes} />
-
-        <br/><br/><br/><br/><br/><br/>
-        <RecipeForm setRecipes={setRecipes} />
-        <InspirationGenerator recipes={recipes} />
-        <FavoriteRecipes recipes={recipes} setRecipes={setRecipes} />
+        <Routes>
+          <Route path="/" element={<RecipeList recipes={recipes} setRecipes={setRecipes} />} />
+          <Route path="/add" element={<RecipeForm setRecipes={setRecipes} />} />
+          <Route path="/favorites" element={<FavoriteRecipes recipes={recipes} setRecipes={setRecipes} />} />
+          <Route path="/feelinglucky" element={<InspirationGenerator recipes={recipes} setRecipes={setRecipes} />} />
+        </Routes>
       </div>
-
-      <Footer/>
     </>
   );
 }
