@@ -25,11 +25,14 @@ export default function App() {
 
 
       <div className="min-h-screen bg-gray-100 p-4">
-        <RecipeForm setRecipes={setRecipes} />
-        <br/><br/><br/><br/><br/><br/>
-        <InspirationGenerator recipes={recipes} />
-        <FavoriteRecipes recipes={recipes} setRecipes={setRecipes} />
         <RecipeList recipes={recipes} setRecipes={setRecipes} />
+
+        <br/><br/><br/><br/><br/><br/>
+        <RecipeForm setRecipes={setRecipes} />
+        <InspirationGenerator recipes={recipes} />
+        <br/><br/>
+        <FavoriteRecipes recipes={recipes} setRecipes={setRecipes} />
+        
         <ToastContainer />
       </div>
     </>
