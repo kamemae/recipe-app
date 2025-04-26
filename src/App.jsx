@@ -5,6 +5,7 @@ import FavoriteRecipes from "./components/FavoriteRecipes";
 import InspirationGenerator from "./components/InspirationGenerator";
 import { ToastContainer } from "react-toastify";
 import NavbarComponent from "./components/parts/navbar";
+import Footer from "./components/parts/footer";
 
 export default function App() {
   const [image, setImage] = useState(null);
@@ -26,14 +27,13 @@ export default function App() {
       <div className="min-h-screen bg-gray-100 p-4">
         <RecipeList recipes={recipes} setRecipes={setRecipes} />
 
-
-
         <br/><br/><br/><br/><br/><br/>
         <RecipeForm setRecipes={setRecipes} />
         <InspirationGenerator recipes={recipes} />
         <FavoriteRecipes recipes={recipes} setRecipes={setRecipes} />
       </div>
-      
+
+      <Footer/>
     </>
   );
 }
