@@ -1,5 +1,7 @@
-import { FaTrash, FaHeart } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function RecipeCard({ recipe, setRecipes }) {
   const deleteRecipe = () => {
@@ -13,17 +15,21 @@ export default function RecipeCard({ recipe, setRecipes }) {
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md">
-      <div className="flex justify-between items-center mb-2">
-        <h3 className="text-xl font-bold">{recipe.title}</h3>
-        <div className="flex gap-2">
-          <FaHeart className={`cursor-pointer ${recipe.favorite ? 'text-red-500' : 'text-gray-400'}`} onClick={toggleFavorite} />
-          <FaTrash className="cursor-pointer text-gray-400" onClick={deleteRecipe} />
-        </div>
-      </div>
-      <p><strong>ingridients:</strong> {recipe.ingredients.join(', ')}</p>
-      <p><strong>steps:</strong> {recipe.steps}</p>
-      <p><strong>time:</strong> {recipe.time} min</p>
-    </div>
+    <>
+      <Card style={{ minWidth: '18rem'}}>
+        
+        <Card.Body>
+          <Card.Title>title</Card.Title>
+          <Card.Text>
+            description
+          </Card.Text>
+          <Button variant="outline-success">See more...</Button>
+          <Button variant={recipe.favorite ? "outline-danger" : "outline-success"} onClick={toggleFavorite} style={{ float: "right" }}><i className={ recipe.favorite ? 'bi bi-heart-fill' : 'bi bi-plus-circle' }/></Button>
+          <Button variant='outline-danger' style={{ float: "right" }} onClick={deleteRecipe}><i className='bi bi-trash'/></Button>
+        </Card.Body>
+      </Card>
+    </>
   );
-} 
+
+  //<Card.Img variant="top" src="holder.js/100px180" />
+}
