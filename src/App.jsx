@@ -30,7 +30,7 @@ export default function App() {
           <Route path="/add" element={<RecipeForm setRecipes={setRecipes} />} />
           <Route path="/favorites" element={<FavoriteRecipes recipes={recipes} setRecipes={setRecipes} />} />
           <Route path="/feelinglucky" element={<InspirationGenerator recipes={recipes} setRecipes={setRecipes} />} />
-          <Route path="/search" element={<SearchResults recipes={recipes} searchTerm={searchTerm} />} />
+          <Route path="/search" element={<SearchResults recipes={recipes} setRecipes={setRecipes} searchTerm={searchTerm} />} />
         </Routes>
       </div>
     </>

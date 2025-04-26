@@ -3,7 +3,7 @@ import RecipeCard from './RecipeCard';
 import { useSearchParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 
-export default function SearchResults({ recipes, searchTerm: initialSearchTerm }) {
+export default function SearchResults({ recipes, searchTerm: initialSearchTerm, setRecipes }) {
   const [searchParams] = useSearchParams();
   const urlSearchTerm = searchParams.get('q') || ''; 
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ export default function SearchResults({ recipes, searchTerm: initialSearchTerm }
       {filteredRecipes.length > 0 ? (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "16px" }}>
           {filteredRecipes.map(recipe => (
-            <RecipeCard key={recipe.id} recipe={recipe} />
+            <RecipeCard key={recipe.id} recipe={recipe} setRecipes={setRecipes} />
           ))}
         </div>
       ) : (
