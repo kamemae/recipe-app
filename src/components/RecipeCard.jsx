@@ -26,4 +26,4 @@ export default function RecipeCard({ recipe, setRecipes }) {
       <p><strong>Czas:</strong> {recipe.time} min</p>
     </div>
   );
-}
+} 
